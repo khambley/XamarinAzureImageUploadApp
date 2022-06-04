@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinAzureImageUploadApp.MainPage">
+    <StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button x:Name="btnSelectPic" 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Select Image"
+                    Clicked="btnSelectPic_Clicked"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="White"
+                    />
+
+            <Button x:Name="btnCapturePic" 
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Capture Image"
+                    Clicked="btnCapturePic_Clicked"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="White"
+                    />
+        </Grid>
+        
+        <Image x:Name="imageView"
+               HeightRequest="100"
+               WidthRequest="200" />
+
+        <ActivityIndicator x:Name="uploadIndicator"
+                           IsVisible="False"
+                           IsRunning="False"
+                           Color="DodgerBlue" />
+
+        <Button x:Name="btnUpload"
+                Text="Upload to Storage"
+                Clicked="btnUpload_Clicked"
+                BackgroundColor="Green"
+                TextColor="White"
+                />
+
+        <Label x:Name="resultsLabel" />
+
+        <Editor x:Name="UploadedUrl"
+                TextColor="Black"
+                HeightRequest="85"
+                Text="Image URL:" />
+        
+    </StackLayout>
+</ContentPage>
