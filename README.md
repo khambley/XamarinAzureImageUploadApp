@@ -23,11 +23,12 @@ using Android.Graphics;
 ...
 ```
 So, I researched it and discovered the **"new"** way of targeting different platforms is using the DependencyService pattern with interfaces. Basically, it goes like this:  
-1. Create an interface in the shared code like I did with IImageResizerService.cs.
-2. Implement the interface in each required project, in my case, iOS and Android. I called mine, ImageResizerService. I used the native Xamarin.iOS and Xamarin.Android graphics packages in each implementation. Be sure to inherit from your interface, like mine, IImageResizerService.
-3. Register the platform implementations with the DependencyService. There are several ways to do it, I chose to use the DependencyAttribute in each implementation.  
-4. Resolve the platform implementations from the shared code, and invoke them using the DependencyService.Get<T> method. In my case, if you look at Mainpage.xaml.cs, line 128, I resolve and invoke the IImageResizerService on the same line.  
+1. **Shared Project > Services > IImageResizerService.cs** Create an interface in the shared code like I did with IImageResizerService.cs.
+2. **Xamarin.Android/Xamarin.iOS > Services > ImageResizerService.cs** Implement the interface in each required project, in my case, iOS and Android. I called mine, ImageResizerService. I used the native Xamarin.iOS and Xamarin.Android graphics packages in each implementation. Be sure to inherit from your interface, like mine, IImageResizerService.
+3. **Xamarin.Android/Xamarin.iOS > Services > ImageResizerService.cs** Register the platform implementations with the DependencyService. There are several ways to do it, I chose to use the DependencyAttribute in each implementation.  
+`[assembly: Dependency(typeof(ImageResizerService))]` 
+4. **Shared Project > MainPage.xaml.cs** Resolve the platform implementations from the shared code, and invoke them using the DependencyService.Get<T> method. In my case, if you look at Mainpage.xaml.cs, line 128, I resolve and invoke the IImageResizerService on the same line.  
 
 `byte[] resizedImage = DependencyService.Get<IImageResizerService>().ResizeImage(imageData, 1000, 1000);`
   
-There is a more detailed explanation from Microsoft [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/dependency-service/introduction).
+There is a more detailed explanation from Microsoft [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/dependency-service/introduction). Hope this helps someone from pulling their hair out! :)
