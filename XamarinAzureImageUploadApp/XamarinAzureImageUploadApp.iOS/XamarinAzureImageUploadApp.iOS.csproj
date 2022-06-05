@@ -68,6 +68,8 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Info %28copy%29.plist" />
+    <Compile Include="Services\ImageResizerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -129,8 +131,11 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\XamarinAzureImageUploadApp\XamarinAzureImageUploadApp.csproj">
-      <Project>{F9C60822-22AF-463E-965C-9CA55A9FA69D}</Project>
+      <Project>{28E81F19-3E7D-4BC0-9DE0-A11402475903}</Project>
       <Name>XamarinAzureImageUploadApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

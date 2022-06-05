@@ -37,8 +37,6 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>AzureImageUploadApp wants to access your photos.</string>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>AzureImageUploadApp wants to access your media library.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>AzureImageUploadApp wants to access your camera.</string>
+	<string>Azure</string>
 </dict>
 </plist>
